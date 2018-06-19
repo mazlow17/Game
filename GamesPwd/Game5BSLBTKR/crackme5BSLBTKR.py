@@ -6,14 +6,25 @@ global x,y,z,xCnt,zCnt, hashHex, yCnt
 x, y, z, xCnt, zCnt, yCnt = 0, 0, 0, 0, 0, 0
 #===================
 salt = 'c25197a8cb0e5dab3aa712c62e766efb'
-pathA = "C:/Users/Bearz/Desktop/MasterWordLists/AgileWordsTest.txt"
-pathB = "C:/Users/Bearz/Desktop/MasterWordLists/AgileWordsTest.txt"
-pathC = "C:/Users/Bearz/Desktop/MasterWordLists/AgileWordsTest.txt"
-pathWhereAmI = "C:/Users/Bearz/Desktop/MasterWordLists/whereAmI.txt"
-pathResults = "C:/Users/Bearz/Desktop/MasterWordLists/results.txt"
+pathA = "/root/Game/GamesPwd/Game5BSLBTKR/AgileWordsA.txt"
+pathB = "/root/Game/GamesPwd/Game5BSLBTKR/AgileWordsB.txt"
+pathC = "/root/Game/GamesPwd/Game5BSLBTKR/AgileWordsC.txt"
+pathWhereAmI = "/root/Game/GamesPwd/Game5BSLBTKR/WhereAmI.txt"
+pathResults = "/root/Game/GamesPwd/Game5BSLBTKR/results.txt"
 hashHex = "b'bd2ad069b4e4e35e1bc081269ae459532a34b7971d4c214e4639101fc489f325'"
 #==================+
 
+"""
+#===================
+salt = 'cabf338a39b44100df4d308bdf59e77e'
+pathA = "C:/Users/Bearz/Desktop/MasterWordLists/AgileWordsA.txt"
+pathB = "C:/Users/Bearz/Desktop/MasterWordLists/AgileWordsB.txt"
+pathC = "C:/Users/Bearz/Desktop/MasterWordLists/AgileWordsC.txt"
+pathWhereAmI = "C:/Users/Bearz/Desktop/GamesPwd/Game2SB5OP3G/whereAmI.txt"
+pathResults = "C:/Users/Bearz/Desktop/GamesPwd/Game2SB5OP3G/result.txt"
+hashHex = "b'42ea3baae191202978d7b8f9017962bab6a7a9296a69cb25b25bbfbf31bd50a8'"
+#==================+
+"""
 
 def EncodePrimary(salt, pwd):
     #salt = binascii.unhexlify(hexstr)
@@ -62,10 +73,11 @@ def PwdGen(listA, listB, listC, pathWhereAmI):
         xCnt = 0
         y = 0
         x = 0
-        z = z+1
-        if z > n:
-            print("out of bounds")
-            sys.exit()
+    z = z+1
+    if z > n:
+        z = y
+        #print("out of bounds")
+        #sys.exit()
 
 
     #test for dup. within set
@@ -87,7 +99,10 @@ def PwdGen(listA, listB, listC, pathWhereAmI):
 
 
 
-    pwd = (bytes(str(valueA +" "+ valueB +" "+ valueC), 'ascii'))
+    hold = (str(valueA +" "+ valueB +" "+ valueC))
+    #print(hold)
+    pwd = hold
+
     #print(pwd)
     return pwd
 
@@ -171,11 +186,10 @@ def main():
 
 
 
-    #print(listA)
-    #print(listB)
-    #print(listC)
-
-
+    #print(valueA)
+    #print(valueA)
+    #print(valueC)
 
 
 main()
+

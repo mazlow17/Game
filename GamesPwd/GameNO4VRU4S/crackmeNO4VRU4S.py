@@ -6,14 +6,13 @@ global x,y,z,xCnt,zCnt, hashHex, yCnt
 x, y, z, xCnt, zCnt, yCnt = 0, 0, 0, 0, 0, 0
 #===================
 salt = '8ad1712ab5d632d8c4dac07b792ebb17'
-pathA = "C:/Users/Bearz/Desktop/MasterWordLists/AgileWordsTest.txt"
-pathB = "C:/Users/Bearz/Desktop/MasterWordLists/AgileWordsTest.txt"
-pathC = "C:/Users/Bearz/Desktop/MasterWordLists/AgileWordsTest.txt"
-pathWhereAmI = "C:/Users/Bearz/Desktop/MasterWordLists/whereAmI.txt"
-pathResults = "C:/Users/Bearz/Desktop/MasterWordLists/results.txt"
+pathA = "/root/Game/GamesPwd/GameNO4VRU4S/AgileWordsA.txt"
+pathB = "/root/Game/GamesPwd/GameNO4VRU4S/AgileWordsB.txt"
+pathC = "/root/Game/GamesPwd/GameNO4VRU4S/AgileWordsC.txt"
+pathWhereAmI = "/root/Game/GamesPwd/GameNO4VRU4S/WhereAmI.txt"
+pathResults = "/root/Game/GamesPwd/GameNO4VRU4S/results.txt"
 hashHex = "b'a3a8b8eb8e739c86f67332d17364b149cd88f33bb11eedae066ac366711ec266'"
 #==================+
-
 
 def EncodePrimary(salt, pwd):
     #salt = binascii.unhexlify(hexstr)
@@ -62,10 +61,11 @@ def PwdGen(listA, listB, listC, pathWhereAmI):
         xCnt = 0
         y = 0
         x = 0
-        z = z+1
-        if z > n:
-            print("out of bounds")
-            sys.exit()
+    z = z+1
+    if z > n:
+        z = y
+        #print("out of bounds")
+        #sys.exit()
 
 
     #test for dup. within set
@@ -86,8 +86,13 @@ def PwdGen(listA, listB, listC, pathWhereAmI):
             the_file.write(str(z))
 
 
-
-    pwd = (bytes(str(valueA +" "+ valueB +" "+ valueC), 'ascii'))
+    #print(valueA)
+    #print(valueB)
+    #print(valueC)
+    hold = (str(valueA +" "+ valueB +" "+ valueC))
+    # print(hold)
+    #pwd = (bytes(hold), 'ascii')
+    pwd = hold
     #print(pwd)
     return pwd
 
@@ -179,3 +184,4 @@ def main():
 
 
 main()
+
